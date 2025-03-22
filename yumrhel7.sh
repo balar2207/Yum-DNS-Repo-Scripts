@@ -14,7 +14,7 @@ enabled=1
 baseurl=file:///var/www/html/repos/rhel7/ 
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 EOF
-yum remove subscription-manager
+yum remove subscription-manager -y
 yum clean all
 yum repolist all
 
