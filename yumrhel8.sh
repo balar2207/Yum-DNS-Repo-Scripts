@@ -23,7 +23,6 @@ enabled=1
 baseurl=file:///var/www/html/repos/rhel8/AppStream/ 
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release 
 EOF
-awk '{gsub(/1/,"0")}1' /etc/yum/pluginconf.d/subscription-manager.conf
 yum clean all
 yum repolist all
 
