@@ -9,7 +9,7 @@ cat > /etc/yum.repos.d/rhel9-local.repo <<EOF
 [Local-BaseOS]
 name=Red Hat Enterprise Linux 9 - BaseOS
 metadata_expire=-1
-gpgcheck=1
+gpgcheck=0
 enabled=1
 baseurl=file:///var/www/html/repos/rhel9/BaseOS/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
@@ -17,7 +17,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 [Local-AppStream]
 name=Red Hat Enterprise Linux 9 - AppStream
 metadata_expire=-1
-gpgcheck=1
+gpgcheck=0
 enabled=1
 baseurl=file:///var/www/html/repos/rhel9/AppStream/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
