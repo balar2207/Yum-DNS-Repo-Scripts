@@ -22,6 +22,7 @@ enabled=1
 baseurl=file:///var/www/html/repos/rhel9/AppStream/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 EOF
+dnf remove subscription-manager -y
 yum clean all
 yum repolist all
 
