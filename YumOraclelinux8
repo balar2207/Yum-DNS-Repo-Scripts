@@ -1,0 +1,30 @@
+#/bin/bash
+mkdir -p /var/www/html/repos/oraclelinux8
+sed -i -e '$aUUID=9d2b484c-286e-4382-b610-796571f35229 /var/www/html/repos ext4 defaults        0 0' /etc/fstab
+mount -a
+mkdir -p /etc/yum.repos.d/disabled/
+mv /etc/yum.repos.d/*.repo* /etc/yum.repos.d/disabled/
+touch /etc/yum.repos.d/oraclelinux8-local.repo
+cat > /etc/yum.repos.d/oraclelinux8-local.repo <<EOF
+[Local-BaseOS] 
+name=oraclelinux8 - BaseOS 
+metadata_expire=-1 
+gpgcheck=0 
+enabled=1 
+baseurl=file:///var/www/html/repos/oraclelinux8/BaseOS/ 
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release 
+  
+
+[Local-AppStream] 
+name=oraclelinux8 - AppStream 
+metadata_expire=-1 
+gpgcheck=0 
+enabled=1 
+baseurl=file:///var/www/html/repos/oraclelinux8/AppStream/ 
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release 
+EOF
+yum remove subscription-manager -y
+yum clean all
+yum repolist all
+
+echo "The yum/dnf local repoisoty is setup and the Data volume is mounted persistently"
