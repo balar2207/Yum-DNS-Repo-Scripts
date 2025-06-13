@@ -1,7 +1,7 @@
 #/bin/bash
 mkdir -p /var/www/html/repos/oraclelinux8
-sed -i -e '$aUUID=9d2b484c-286e-4382-b610-796571f35229 /var/www/html/repos ext4 defaults        0 0' /etc/fstab
-mount -a
+#sed -i -e '$aUUID=9d2b484c-286e-4382-b610-796571f35229 /var/www/html/repos ext4 defaults        0 0' /etc/fstab
+mount /dev/sr0 /media
 mkdir -p /etc/yum.repos.d/disabled/
 mv /etc/yum.repos.d/*.repo* /etc/yum.repos.d/disabled/
 touch /etc/yum.repos.d/oraclelinux8-local.repo
