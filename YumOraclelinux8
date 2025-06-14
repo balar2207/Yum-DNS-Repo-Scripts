@@ -1,6 +1,6 @@
 #/bin/bash
 mkdir -p /var/www/html/repos/oraclelinux8
-#sed -i -e '$aUUID=xXI2Rx-GQsS-wNwE-9Tmf-hSgT-ZIxb-yNkpaG /var/www/html/repos ext4 defaults        0 0' /etc/fstab
+#sed -i -e '$aUUID=14bddee2-3433-4a4e-8348-880a800f1058 /var/www/html/repos ext4 defaults        0 0' /etc/fstab
 mount /dev/sr0 /media
 mkdir -p /etc/yum.repos.d/disabled/
 mv /etc/yum.repos.d/*.repo* /etc/yum.repos.d/disabled/
