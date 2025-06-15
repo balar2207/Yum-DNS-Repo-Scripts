@@ -1,6 +1,6 @@
 #/bin/bash
 mkdir -p /var/www/html/repos/Rockylinux8
-sed -i -e '$aUUID=14bddee2-3433-4a4e-8348-880a800f1058 /var/www/html/repos ext4 defaults        0 0' /etc/fstab
+sed -i -e '$aUUID=6cc7a0a2-9efe-4ba6-b5a9-a79c1accc7de /var/www/html/repos ext4 defaults        0 0' /etc/fstab
 mount -a
 mount /dev/sr0 /media
 mkdir -p /etc/yum.repos.d/disabled/
