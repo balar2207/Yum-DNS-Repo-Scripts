@@ -1,0 +1,31 @@
+#/bin/bash
+mkdir -p /var/www/html/repos/Rockylinux8
+sed -i -e '$aUUID=14bddee2-3433-4a4e-8348-880a800f1058 /var/www/html/repos ext4 defaults        0 0' /etc/fstab
+mount -a
+mount /dev/sr0 /media
+mkdir -p /etc/yum.repos.d/disabled/
+mv /etc/yum.repos.d/*.repo* /etc/yum.repos.d/disabled/
+touch /etc/yum.repos.d/Rockylinux8-local.repo
+cat > /etc/yum.repos.d/Rockylinux8-local.repo <<EOF
+[Local-BaseOS] 
+name=Rockylinux8 - BaseOS 
+metadata_expire=-1 
+gpgcheck=0 
+enabled=1 
+baseurl=file:///var/www/html/repos/Rockylinux8/BaseOS/ 
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release 
+  
+
+[Local-AppStream] 
+name=Rockylinux8 - AppStream 
+metadata_expire=-1 
+gpgcheck=0 
+enabled=1 
+baseurl=file:///var/www/html/repos/Rockylinux8/AppStream/ 
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release 
+EOF
+yum remove subscription-manager -y
+yum clean all
+yum repolist all
+
+echo "The yum/dnf local repoisoty is setup and the Data volume is mounted persistently"
